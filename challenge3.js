@@ -1,14 +1,16 @@
 function myFunction() {
+    //declaration of variables for input from user
     let period = document.forms["myForm"]["period"].value;
     let disability = document.forms["myForm"]["disability"].value;
     let gross = document.forms["myForm"]["gross"].value;
+    //declaration of global variables used as program is run
     let net, tax, nssf, nhif, salary, deduct;
-    //else if(typeof demerits === 'boolean'){
-    //document.getElementById("demo").innerHTML = "Your entry is invalid!";
-    //}
     
+    //if statement for monthly net income calculations
     if (period === 'month'){
+        //monthly relief variable declaration
         const relief = 2400;
+        //if...else statements to calculate monthly tax according to basic salary
         if(gross < 24001){
             tax = (0.1*gross);
             salary = (gross - tax);
@@ -21,13 +23,13 @@ function myFunction() {
             tax = ((gross-32333)*0.3)+((32333-24000)*0.25)+(24000*0.1);
             salary = (gross - tax);
         }
-
+        //if...else statement to calculate nssf value
         if(gross <100000){
             nssf = (gross*0.06)
         }else{
             nssf = 6000;
         }
-
+        //switch statement to calculate nhif value range
         switch(gross){
             case 0-5999 : nhif = 150;
             break;
@@ -64,6 +66,7 @@ function myFunction() {
             default : nhif = 1700;
             break;
         }
+        //if...else statements to check for disability and disability exemptions
         if(disability === 'yes'){
             if(tax <= 152400){
                 salary = gross;
@@ -72,6 +75,7 @@ function myFunction() {
                 salary = gross - (tax - 147600);
                 net = salary;
             }
+            //Waiver information to HTML file
             document.getElementById("waiver").innerHTML = "You get a Ksh. 150,000 tax waiver.";
         }else{
             deduct = (nhif+nssf)
@@ -81,11 +85,15 @@ function myFunction() {
                 net = (salary - deduct) + relief;
             }
         }
-        document.getElementById("demo").innerHTML = `Payee tax: ${tax} <br>` +
-        `NHIF : ${nhif} <br>` + `NSSF : ${nssf} <br>` +`Net Salary : ${net}`;
+        //DOM output to HTML file
+        document.getElementById("demo").innerHTML = `Payee tax: ${tax.toFixed(2)} <br>` +
+        `NHIF : ${nhif} <br>` + `NSSF : ${nssf} <br>` +`Net Salary : ${net.toFixed(2)}`;
     }
+    //else if statements for annual net income calculations
     else if(period === 'year'){
+        //annual relief variable declaration
         const relief = 28800;
+        //if...else statements to calculate annual tax according to basic salary
         if(gross < 288000){
             tax = (0.1*gross);
             salary = (gross - tax);
@@ -98,13 +106,13 @@ function myFunction() {
             tax = ((gross-388000)*0.3)+((388000-288000)*0.25)+(288000*0.1);
             salary = (gross - tax);
         }
-
+        //if...else statement to calculate nssf value
         if(gross <1200000){
             nssf = (gross*0.6)
         }else{
             nssf = 72000;
         }
-
+        //switch statement to calculate monthly nhif value range
         switch(gross){
             case 0-5999 : nhif = 150;
             break;
@@ -141,7 +149,10 @@ function myFunction() {
             default : nhif = 1700;
             break;
         }
+        //multiplication of monthly nhif value by 12 to get annual value
         nhif = (nhif*12);
+
+        //if...else statements to check for disability and disability exemptions
         if(disability === 'yes'){
             if(tax <= 1828800){
                 salary = gross;
@@ -150,6 +161,7 @@ function myFunction() {
                 salary = gross - (tax - 1771200);
                 net = salary;
             }
+            //Waiver information to HTML file
             document.getElementById("waiver").innerHTML = "You get a Ksh. 1,800,000 tax waiver.";
         }else{
             deduct = (nhif+nssf)
@@ -159,7 +171,8 @@ function myFunction() {
                 net = (salary - deduct) + relief;
             }
         }
-        document.getElementById("demo").innerHTML = `Payee tax: ${tax} <br>` +
-        `NHIF : ${nhif} <br>` + `NSSF : ${nssf} <br>` +`Net Salary : ${net}`;
+        //DOM output to HTML file
+        document.getElementById("demo").innerHTML = `Payee tax: ${tax.toFixed(2)} <br>` +
+        `NHIF : ${nhif} <br>` + `NSSF : ${nssf} <br>` +`Net Salary : ${net.toFixed(2)}`;
     }
 }

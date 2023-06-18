@@ -1,11 +1,15 @@
 function myFunction() {
+    //pop-up prompt to ask user for marks
     let marks = prompt("Please enter your marks", "0");
+    //initialised variable as boolean to check if reassignment occurs
     let grade = false;
+
+    //if...else if...else conditional statements to assess grade range
     if (marks > 79 && marks <=100) {
       grade = "A";
     }
     else if (marks > 60 && marks <=79) {
-        grade = "B";
+        grade = "B";t
     }
     else if (marks > 49 && marks <=60) {
         grade = "C";
@@ -17,6 +21,7 @@ function myFunction() {
         grade = "E";
     }
     
+    //if...elseif statements to assess whether marks got a grade or input was invalid
     if(typeof grade === 'string'){    
     document.getElementById("demo").innerHTML =
     "Your grade is : " + grade;
