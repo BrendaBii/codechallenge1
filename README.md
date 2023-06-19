@@ -10,7 +10,11 @@
 
 ## Project Setup
 
-Fork and clone this repository into your local environment. To launch these programs you would need an internet browser installed. Chrome Browser comes highly recommended. To edit the files we recommend that you use Visual Studio Code.
+To launch these programs you would need:
+
+- An internet browser of your choice installed. Chrome Browser comes highly recommended.
+
+- To edit the files we recommend that you use Visual Studio Code.
 
 ## Author & License
 
