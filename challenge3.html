@@ -5,9 +5,10 @@
 </head>
 <body>
     <h1>Net Salary Calculator</h1>
-<!--onsubmit="myFunction()"-->
+    <!--Form with name "myForm" to collect user input-->
     <form name="myForm" onsubmit="return false;">
       <p>Please select your payment period:</p>
+      <!--Two radio buttons to input time period-->
       <input type="radio" id="month" name="period" value="month">
       <label for="month">Month</label><br>
       <input type="radio" id="year" name="period" value="year">
@@ -16,6 +17,7 @@
       <br>  
 
       <p>Do you have a disability exemption certificate?</p>
+      <!--Two radio buttons to confirm exemption certificate-->
       <input type="radio" id="yes" name="disability" value="yes">
       <label for="yes">Yes</label><br>
       <input type="radio" id="no" name="disability" value="no">
@@ -25,12 +27,15 @@
 
       <p>Please enter your gross salary:</p>
       <label for="gross">Basic Salary :</label>
+      <!--number input for basic salary amount-->
       <input type="number" id="gross" name="gross" min="0">
       <br><br>
+      <!--submit button to call function in challenge3.js-->
       <input type="submit" value="Submit" onclick="myFunction()">
     </form>
-    
+    <!--paragraph tag to insert calculations output-->
     <h3><p id="demo"></p></h3>
+    <!--paragraph tag to insert disability waiver alert -->
     <p id="waiver"></p>
     <script src="./challenge3.js"></script>
 </body>

@@ -13,7 +13,7 @@ function myFunction() {
         //if...else statements to calculate monthly tax according to basic salary
         if(gross < 24001){
             tax = (0.1*gross);
-            salary = (gross - tax);
+            salary = parseInt(gross);
         }
         else if(gross > 24000 && gross <= 32333){
             tax = ((gross-24000)*0.25)+(24000*0.1);
@@ -87,7 +87,7 @@ function myFunction() {
         }
         //DOM output to HTML file
         document.getElementById("demo").innerHTML = `Payee tax: ${tax.toFixed(2)} <br>` +
-        `NHIF : ${nhif} <br>` + `NSSF : ${nssf} <br>` +`Net Salary : ${net.toFixed(2)}`;
+        `NHIF : ${nhif} <br>` + `NSSF : ${nssf.toFixed(2)} <br>` +`Net Salary : ${net.toFixed(2)}`;
     }
     //else if statements for annual net income calculations
     else if(period === 'year'){
@@ -96,7 +96,7 @@ function myFunction() {
         //if...else statements to calculate annual tax according to basic salary
         if(gross < 288000){
             tax = (0.1*gross);
-            salary = (gross - tax);
+            salary = parseInt(gross);
         }
         else if(gross > 288000 && gross <= 388000){
             tax = ((gross-288000)*0.25)+(288000*0.1);
@@ -108,7 +108,7 @@ function myFunction() {
         }
         //if...else statement to calculate nssf value
         if(gross <1200000){
-            nssf = (gross*0.6)
+            nssf = (gross*0.06)
         }else{
             nssf = 72000;
         }
