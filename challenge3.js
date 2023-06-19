@@ -161,7 +161,7 @@ function myFunction() {
                 salary = gross - (tax - 1771200);
                 net = salary;
             }
-            //Waiver information to HTML file
+            //Waiver information to "waiver id" in HTML file
             document.getElementById("waiver").innerHTML = "You get a Ksh. 1,800,000 tax waiver.";
         }else{
             deduct = (nhif+nssf)
