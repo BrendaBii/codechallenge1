@@ -1,17 +1,21 @@
 function myFunction() {
-    //declaration of variables for input from user
+    //declaration of variables for input fr
+    document.getElementById("waiver").innerHTML = "";
+    document.getElementById("demo").innerHTML = "";
     let period = document.forms["myForm"]["period"].value;
     let disability = document.forms["myForm"]["disability"].value;
     let gross = document.forms["myForm"]["gross"].value;
     //declaration of global variables used as program is run
     let net, tax, nssf, nhif, salary, deduct;
-    
     //if statement for monthly net income calculations
     if (period === 'month'){
         //monthly relief variable declaration
         const relief = 2400;
         //if...else statements to calculate monthly tax according to basic salary
-        if(gross < 24001){
+        if(gross <  0){
+            document.getElementById("demo").innerHTML = "Invalid input!!!";
+        }
+        else if(gross >= 0 && gross < 24001){
             tax = (0.1*gross);
             salary = parseInt(gross);
         }
@@ -69,7 +73,7 @@ function myFunction() {
         //if...else statements to check for disability and disability exemptions
         if(disability === 'yes'){
             if(tax <= 152400){
-                salary = gross;
+                salary = parseInt(gross);
                 net = salary;
             }else{
                 salary = gross - (tax - 147600);
@@ -86,7 +90,8 @@ function myFunction() {
             }
         }
         //DOM output to HTML file
-        document.getElementById("demo").innerHTML = `Payee tax: ${tax.toFixed(2)} <br>` +
+        document.getElementById("demo").innerHTML = `Basic salary : ${gross} <br>` + 
+        `Payee tax: ${tax.toFixed(2)} <br>` +
         `NHIF : ${nhif} <br>` + `NSSF : ${nssf.toFixed(2)} <br>` +`Net Salary : ${net.toFixed(2)}`;
     }
     //else if statements for annual net income calculations
@@ -94,7 +99,10 @@ function myFunction() {
         //annual relief variable declaration
         const relief = 28800;
         //if...else statements to calculate annual tax according to basic salary
-        if(gross < 288000){
+        if(gross <  0){
+            document.getElementById("demo").innerHTML = "Invalid input!!!";
+        }
+        else if(gross >= 0 && gross < 288000){
             tax = (0.1*gross);
             salary = parseInt(gross);
         }
@@ -155,7 +163,7 @@ function myFunction() {
         //if...else statements to check for disability and disability exemptions
         if(disability === 'yes'){
             if(tax <= 1828800){
-                salary = gross;
+                salary = parseInt(gross);
                 net = salary;
             }else{
                 salary = gross - (tax - 1771200);
@@ -172,7 +180,9 @@ function myFunction() {
             }
         }
         //DOM output to HTML file
-        document.getElementById("demo").innerHTML = `Payee tax: ${tax.toFixed(2)} <br>` +
+        document.getElementById("demo").innerHTML = `Basic salary : ${gross} <br>` +
+        `Payee tax: ${tax.toFixed(2)} <br>` +
         `NHIF : ${nhif} <br>` + `NSSF : ${nssf} <br>` +`Net Salary : ${net.toFixed(2)}`;
     }
+document.getElementById("myForm").reset();
 }

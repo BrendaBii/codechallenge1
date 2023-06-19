@@ -6,7 +6,7 @@
 <body>
     <h1>Net Salary Calculator</h1>
     <!--Form with name "myForm" to collect user input-->
-    <form name="myForm" onsubmit="return false;">
+    <form id="myForm" name="myForm" onsubmit="return false;">
       <p>Please select your payment period:</p>
       <!--Two radio buttons to input time period-->
       <input type="radio" id="month" name="period" value="month">
@@ -30,6 +30,7 @@
       <!--number input for basic salary amount-->
       <input type="number" id="gross" name="gross" min="0">
       <br><br>
+      
       <!--submit button to call function in challenge3.js file-->
       <input type="submit" value="Submit" onclick="myFunction()">
     </form>
